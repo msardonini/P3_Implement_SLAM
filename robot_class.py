@@ -85,13 +85,12 @@ class robot:
             
             
             temp = [self.landmarks[i][0] - self.x, self.landmarks[i][1] - self.y]
+            if (abs(temp[0]) < self.measurement_range and abs(temp[0]) < self.measurement_range):
+                
+                noise = self.rand() * self.measurement_noise
+                temp[0] += noise
+                temp[1] += noise
             
-            noise = self.rand() * self.measurement_noise
-            
-            temp[0] += noise
-            temp[1] += noise
-            
-            if (temp[0] < self.measurement_range and temp[1] < self.measurement_range):
                 measurements.append([i,temp[0],temp[1]])
         
         ## TODO: For each landmark
